@@ -8,7 +8,6 @@ import {config} from '../config/config'
 export default function Home() {
 
   const {countStars, distance, startPosition} = config
-
   const [stars, setStars] = useState<IStar[]>([])
   const [position, setPosition] = useState<number>(startPosition)
 
@@ -17,7 +16,6 @@ export default function Home() {
     const timer = setInterval(() => {
 
       setPosition((prev: number): number => {  
-        console.log(countStars * -distance)
         if (prev === (countStars * -distance)) clearInterval(timer)
         return prev - 1
       })
@@ -52,6 +50,7 @@ export default function Home() {
   useEffect(() => {
     start()
     generateStars(generateArray(countStars))
+    console.log(position)
   }, [])
 
   return (
