@@ -8,4 +8,9 @@ export interface IStar {
     value: number,
     x: number,
     y: number
-  }
+}
+
+export interface IPosition {
+    bottom: number,
+    left: number
+}

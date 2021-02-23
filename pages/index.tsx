@@ -11,6 +11,7 @@ export default function Home() {
   const [stars, setStars] = useState<IStar[]>([])
   const [position, setPosition] = useState<number>(startPosition)
 
+
   const start = (): void => {
 
     const timer = setInterval(() => {
@@ -26,8 +27,9 @@ export default function Home() {
   const allStars = stars.map((star, i) => {
     return (
       <Star 
-        key={i} 
-        style={{bottom: `${star.y}px`, left: `${star.x}px`}}
+        key={i}
+        bottom={star.y} 
+        left={star.x}
       >{star.value}</Star>
     )
   })
@@ -37,7 +39,7 @@ export default function Home() {
 
     array.forEach((item) => {
       const star: IStar = {
-        value: getRandomInt(-5, 5),
+        value: getRandomInt(-5, 6),
         x: getRandomInt(20, 660),
         y: item * distance
       }
@@ -50,7 +52,6 @@ export default function Home() {
   useEffect(() => {
     start()
     generateStars(generateArray(countStars))
-    console.log(position)
   }, [])
 
   return (
